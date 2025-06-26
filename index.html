@@ -72,11 +72,12 @@
         .hero {
             height: 100vh;
             display: flex;
+            flex-direction: column;
             align-items: center;
             justify-content: center;
             text-align: center;
-            color: white;
-            background: linear-gradient(135deg, #1e3c72 0%, #2d5aa0 100%);
+            color: black;
+            background: url('images/banner-encontro.jfif') center center/cover no-repeat;
             position: relative;
             overflow: hidden;
         }
@@ -88,15 +89,15 @@
             left: 0;
             right: 0;
             bottom: 0;
-            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 800"><polygon fill="%23ffffff05" points="0,0 400,200 800,50 1200,300 1200,0"/><polygon fill="%23ffffff03" points="0,300 300,500 600,350 900,600 1200,400 1200,800 0,800"/></svg>');
-            background-size: cover;
-            opacity: 0.1;
+            background: rgba(255,255,255,0.7); /* sobreposição para legibilidade */
+            z-index: 1;
         }
 
         .hero-content {
             z-index: 2;
             max-width: 800px;
             animation: fadeInUp 1s ease-out;
+            position: relative;
         }
 
         .hero h1 {
@@ -459,8 +460,9 @@
     <section class="hero">
         <div class="hero-content">
             <h1>Encontro Nacional dos Calções Pretos</h1>
-            <a href="#registration" class="cta-button">Inscreva-se Agora</a>
+            <p>Reunindo os formados em Educação Física pela EsEFEx para compartilhar experiências e fortalecer laços</p>
         </div>
+        <a href="#registration" class="cta-button">Inscreva-se Agora</a>
     </section>
 
     <section id="about">
