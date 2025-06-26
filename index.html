@@ -28,8 +28,8 @@
 
         /* Header */
         header {
-            background: rgba(255, 255, 255, 0.1);
-            backdrop-filter: blur(10px);
+            background: #e1ad01;
+            backdrop-filter: none;
             position: fixed;
             width: 100%;
             top: 0;
@@ -58,7 +58,7 @@
         }
 
         .nav-links a {
-            color: black;
+            color: #111;
             text-decoration: none;
             transition: color 0.3s ease;
             font-weight: 500;
@@ -337,8 +337,8 @@
 
         /* Footer */
         footer {
-            background: #e1ad01;
-            color: white;
+            background: #fff;
+            color: #111;
             text-align: center;
             padding: 2rem 0;
         }
@@ -490,6 +490,23 @@
             color: #fff;
             cursor: pointer;
             z-index: 10000;
+        }
+
+        .section-title,
+        .info-card h3,
+        .day-header,
+        .time,
+        .activity h4,
+        .contact-info h3,
+        .form-group label,
+        footer,
+        .contact-info p,
+        .contact-info strong,
+        .contact-form h3,
+        #contact label,
+        #contact input,
+        #contact textarea {
+            color: #111 !important;
         }
     </style>
 </head>
