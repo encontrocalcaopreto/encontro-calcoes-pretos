@@ -527,10 +527,12 @@
     </header>
 
     <section class="hero">
-        <div class="hero-content">
+        <div class="hero-content" style="position:relative; display:flex; align-items:center; justify-content:center;">
             <img src="images/banner-encontro.png" alt="Banner Encontro" style="max-width: 1500px; width: 90vw; display: block; margin-left: auto; margin-right: auto; margin-bottom: 2rem;">
-            <h1>Encontro Nacional dos Calções Pretos</h1>
-            <a href="#registration" class="cta-button" style="margin-top:2rem;">Inscreva-se Agora</a>
+            <div style="position:absolute; left:0; right:0; top:0; bottom:0; display:flex; flex-direction:column; align-items:center; justify-content:center; pointer-events:none;">
+                <h1 style="color:#111; text-shadow: 2px 2px 8px #fff, 0 1px 0 #fff; pointer-events:auto;">Encontro Nacional dos Calções Pretos</h1>
+                <a href="#registration" class="cta-button" style="margin-top:2rem; pointer-events:auto;">Inscreva-se Agora</a>
+            </div>
         </div>
     </section>
 
