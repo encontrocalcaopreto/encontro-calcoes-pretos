@@ -557,7 +557,7 @@
                 <div class="program-item">
                     <div class="time">09:00</div>
                     <div class="activity">
-                        <p>Recepção dos participantes e entrega de material</p>
+                        <h4>Recepção dos participantes e entrega de material</h4>
                     </div>
                 </div>
                 <div class="program-item">
@@ -592,9 +592,14 @@
         <div class="container">
             <h2 class="section-title">Inscrição</h2>
             <div class="info-card" style="max-width: 600px; margin: 0 auto;">
-                <h3>Inscrições Abertas</h3>
-                <p><strong>Taxa de Inscrição:</strong> R$ 55,00</p>
-                <p><strong>Inclui:</strong>...</p>
+                <h3>Inscrições</h3>
+                <ul style="text-align:left; max-width: 500px; margin: 0 auto 1.5rem auto; font-size: 1.1rem;">
+                    <li><strong>Inclui:</strong> Almoço, refrigerante, água, suco e chopp</li>
+                    <li><strong>Adulto:</strong> R$ 60,00</li>
+                    <li><strong>Sócios da AsEFEx:</strong> R$ 40,00</li>
+                    <li><strong>Crianças de 09 a 14 anos:</strong> R$ 30,00</li>
+                    <li><strong>Crianças de até 08 anos:</strong> Isentos</li>
+                </ul>
                 <p><strong>Prazo:</strong> Até 30 de Julho de 2025</p>
                 <br>
                 <a href="#contact" class="cta-button">Inscrever-se</a>
@@ -705,7 +710,7 @@
                 </div>
                 <div class="contact-form">
                     <h3>📧 Envie sua Mensagem</h3>
-                    <form>
+                    <form id="contato-form" action="mailto:encontrocalcaopreto@gmail.com" method="POST" enctype="text/plain">
                         <div class="form-group">
                             <label for="name">Nome Completo</label>
                             <input type="text" id="name" name="name" required>
