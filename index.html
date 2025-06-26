@@ -746,7 +746,9 @@
     <!-- Modal para imagens -->
     <div class="modal-img-bg" id="modal-img-bg" onclick="fecharModalImg(event)">
         <span class="close-modal" onclick="fecharModalImg(event)">&times;</span>
+        <button class="carousel-btn prev" id="modal-prev" style="position:absolute;left:40px;top:50%;transform:translateY(-50%);z-index:10000;font-size:2.5rem;display:none;">&#10094;</button>
         <img id="modal-img" src="" alt="Imagem em destaque">
+        <button class="carousel-btn next" id="modal-next" style="position:absolute;right:40px;top:50%;transform:translateY(-50%);z-index:10000;font-size:2.5rem;display:none;">&#10095;</button>
     </div>
 
     <script>
@@ -847,25 +849,76 @@
             }
         }
 
-        // Adicionar eventos para abrir modal nas imagens dos produtos
-        document.querySelectorAll('.produtos-lista .carousel-img').forEach(img => {
-            img.addEventListener('click', function() {
-                abrirModalImg(this.src);
-            });
-        });
-        // Adicionar eventos para abrir modal nas imagens dos carrosseis da galeria
-        document.getElementById('img-galeria-2023').addEventListener('click', function() {
-            abrirModalImg(this.src);
-        });
-        document.getElementById('img-galeria-2024').addEventListener('click', function() {
-            abrirModalImg(this.src);
-        });
-        function abrirModalImg(src) {
+        // --- Modal navegação ---
+        let modalImgsArr = [];
+        let modalIdx = 0;
+        let modalType = '';
+        function abrirModalImg(src, arr = [], idx = 0, type = '') {
             const modal = document.getElementById('modal-img-bg');
             const modalImg = document.getElementById('modal-img');
+            modalImgsArr = arr;
+            modalIdx = idx;
+            modalType = type;
             modalImg.src = src;
             modal.classList.add('active');
+            // Mostrar setas se houver mais de 1 imagem
+            document.getElementById('modal-prev').style.display = arr.length > 1 ? 'block' : 'none';
+            document.getElementById('modal-next').style.display = arr.length > 1 ? 'block' : 'none';
         }
+        document.getElementById('modal-prev').onclick = function(e) {
+            e.stopPropagation();
+            modalIdx = (modalIdx - 1 + modalImgsArr.length) % modalImgsArr.length;
+            document.getElementById('modal-img').src = modalImgsArr[modalIdx];
+        };
+        document.getElementById('modal-next').onclick = function(e) {
+            e.stopPropagation();
+            modalIdx = (modalIdx + 1) % modalImgsArr.length;
+            document.getElementById('modal-img').src = modalImgsArr[modalIdx];
+        };
+        // Produtos
+        const produtosImgs = [
+            'images/produtos/camiseta1.jpg',
+            'images/produtos/camiseta2.jpg',
+            'images/produtos/caneco1.jpg',
+            'images/produtos/garrafa1.jpg',
+            'images/produtos/garrafa2.jpg',
+            'images/produtos/moeda1.jpg',
+            'images/produtos/sacola1.png',
+            'images/produtos/sacola2.png',
+            'images/produtos/velame1.jpg'
+        ];
+        document.querySelectorAll('.produtos-lista .carousel-img').forEach((img, i) => {
+            img.onclick = function() {
+                abrirModalImg(this.src, produtosImgs, i, 'produtos');
+            };
+        });
+        // Galeria 2023
+        const galeria2023 = [
+            'images/galeria/2023/Imagem1.jpg',
+            'images/galeria/2023/Imagem2.jpg',
+            'images/galeria/2023/Imagem3.jpg',
+            'images/galeria/2023/Imagem4.jpg',
+            'images/galeria/2023/Imagem5.jpg',
+            'images/galeria/2023/Imagem6.jpg'
+        ];
+        document.getElementById('img-galeria-2023').onclick = function() {
+            let idx = galeria2023.indexOf(this.src.replace(window.location.origin + '/', ''));
+            if(idx === -1) idx = 0;
+            abrirModalImg(this.src, galeria2023, idx, '2023');
+        };
+        // Galeria 2024
+        const galeria2024 = [
+            'images/galeria/2024/Imagem1.jpg',
+            'images/galeria/2024/Imagem2.jpg',
+            'images/galeria/2024/Imagem3.jpg',
+            'images/galeria/2024/Imagem4.jpg',
+            'images/galeria/2024/Imagem5.jpg'
+        ];
+        document.getElementById('img-galeria-2024').onclick = function() {
+            let idx = galeria2024.indexOf(this.src.replace(window.location.origin + '/', ''));
+            if(idx === -1) idx = 0;
+            abrirModalImg(this.src, galeria2024, idx, '2024');
+        };
     </script>
 </body>
 </html>
