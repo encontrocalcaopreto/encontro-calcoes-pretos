@@ -439,6 +439,15 @@
         .galeria-grid img:hover {
             transform: scale(1.04);
         }
+
+        /* Galeria de Fotos */
+        .galeria-carrosseis {
+            display: flex;
+            gap: 2rem;
+        }
+        .galeria-carrossel-box {
+            text-align: center;
+        }
     </style>
 </head>
 <body id="topo">
@@ -509,38 +518,33 @@
             <div class="program-day">
                 <div class="day-header">Dia 30 de Agosto - Sábado</div>
                 <div class="program-item">
-                    <div class="time">10:00</div>
+                    <div class="time">09:00</div>
                     <div class="activity">
-                        <h4>Credenciamento</h4>
                         <p>Recepção dos participantes e entrega de material</p>
                     </div>
                 </div>
                 <div class="program-item">
-                    <div class="time">...</div>
+                    <div class="time">10:00</div>
                     <div class="activity">
-                        <h4>Cerimônia de Abertura</h4>
-                        <p>Execução do Hino Nacional e palavras de boas-vindas</p>
+                        <h4>Palavras do Ch CCFEx</h4>
                     </div>
                 </div>
                 <div class="program-item">
-                    <div class="time">...</div>
+                    <div class="time">11:00</div>
                     <div class="activity">
-                        <h4>...</h4>
-                        <p>...</p>
+                        <h4>Foto oficial</h4>
                     </div>
                 </div>
                 <div class="program-item">
                     <div class="time">12:00</div>
                     <div class="activity">
                         <h4>Almoço</h4>
-                        <p>Confraternização entre os participantes</p>
                     </div>
                 </div>
                 <div class="program-item">
                     <div class="time">14:00</div>
                     <div class="activity">
-                        <h4>...</h4>
-                        <p>...</p>
+                        <h4>Término do evento</h4>
                     </div>
                 </div>
             </div>
@@ -565,25 +569,55 @@
         <div class="container">
             <h2 class="section-title">Produtos Oficiais</h2>
             <div class="produtos-lista">
-                <!-- Produto Camiseta -->
+                <!-- Camiseta Masculina -->
                 <div class="produto">
-                    <h3>Camiseta</h3>
-                    <div class="carousel" id="carousel-camiseta">
-                        <button class="carousel-btn prev" onclick="mudarImagem('camiseta', -1)">&#10094;</button>
-                        <img src="images/produtos/camiseta1.jpg" alt="Camiseta 1" class="carousel-img" id="img-camiseta">
-                        <button class="carousel-btn next" onclick="mudarImagem('camiseta', 1)">&#10095;</button>
-                    </div>
-                    <p>Camiseta oficial do evento. Tecido confortável, disponível em vários tamanhos.</p>
+                    <h3>Camiseta Masculina</h3>
+                    <img src="images/produtos/camiseta1.jpg" alt="Camiseta Masculina" class="carousel-img">
+                    <p class="preco">R$ 50,00</p>
                 </div>
-                <!-- Produto Caneco -->
+                <!-- Camiseta Feminina -->
+                <div class="produto">
+                    <h3>Camiseta Feminina</h3>
+                    <img src="images/produtos/camiseta2.jpg" alt="Camiseta Feminina" class="carousel-img">
+                    <p class="preco">R$ 45,00</p>
+                </div>
+                <!-- Caneco -->
                 <div class="produto">
                     <h3>Caneco</h3>
-                    <div class="carousel" id="carousel-caneco">
-                        <button class="carousel-btn prev" onclick="mudarImagem('caneco', -1)">&#10094;</button>
-                        <img src="images/produtos/caneco1.jpg" alt="Caneco 1" class="carousel-img" id="img-caneco">
-                        <button class="carousel-btn next" onclick="mudarImagem('caneco', 1)">&#10095;</button>
+                    <img src="images/produtos/caneco1.jpg" alt="Caneco" class="carousel-img">
+                    <p class="preco">R$ 90,00</p>
+                </div>
+                <!-- Garrafas (carrossel) -->
+                <div class="produto">
+                    <h3>Garrafa</h3>
+                    <div class="carousel" id="carousel-garrafa">
+                        <button class="carousel-btn prev" onclick="mudarImagem('garrafa', -1)">&#10094;</button>
+                        <img src="images/produtos/garrafa1.jpg" alt="Garrafa 1" class="carousel-img" id="img-garrafa">
+                        <button class="carousel-btn next" onclick="mudarImagem('garrafa', 1)">&#10095;</button>
                     </div>
-                    <p>Caneco personalizado do Encontro Nacional dos Calções Pretos.</p>
+                    <p class="preco">R$ 80,00</p>
+                </div>
+                <!-- Moeda -->
+                <div class="produto">
+                    <h3>Moeda</h3>
+                    <img src="images/produtos/moeda1.jpg" alt="Moeda" class="carousel-img">
+                    <p class="preco">R$ 60,00</p>
+                </div>
+                <!-- Sacolas (carrossel) -->
+                <div class="produto">
+                    <h3>Sacola</h3>
+                    <div class="carousel" id="carousel-sacola">
+                        <button class="carousel-btn prev" onclick="mudarImagem('sacola', -1)">&#10094;</button>
+                        <img src="images/produtos/sacola1.png" alt="Sacola 1" class="carousel-img" id="img-sacola">
+                        <button class="carousel-btn next" onclick="mudarImagem('sacola', 1)">&#10095;</button>
+                    </div>
+                    <p class="preco">R$ 15,00</p>
+                </div>
+                <!-- Velame -->
+                <div class="produto">
+                    <h3>Velame</h3>
+                    <img src="images/produtos/velame1.jpg" alt="Velame" class="carousel-img">
+                    <p class="preco">R$ 35,00</p>
                 </div>
             </div>
         </div>
@@ -593,11 +627,28 @@
     <section id="galeria">
         <div class="container">
             <h2 class="section-title">Galeria de Encontros Anteriores</h2>
+            <div class="galeria-carrosseis">
+                <!-- Carrossel 2023 -->
+                <div class="galeria-carrossel-box">
+                    <h3>Encontro 2023</h3>
+                    <div class="carousel" id="carousel-2023">
+                        <button class="carousel-btn prev" onclick="mudarGaleria('2023', -1)">&#10094;</button>
+                        <img src="images/galeria/2023/Imagem1.jpg" alt="2023 Imagem 1" class="carousel-img" id="img-galeria-2023">
+                        <button class="carousel-btn next" onclick="mudarGaleria('2023', 1)">&#10095;</button>
+                    </div>
+                </div>
+                <!-- Carrossel 2024 -->
+                <div class="galeria-carrossel-box">
+                    <h3>Encontro 2024</h3>
+                    <div class="carousel" id="carousel-2024">
+                        <button class="carousel-btn prev" onclick="mudarGaleria('2024', -1)">&#10094;</button>
+                        <img src="images/galeria/2024/Imagem1.jpg" alt="2024 Imagem 1" class="carousel-img" id="img-galeria-2024">
+                        <button class="carousel-btn next" onclick="mudarGaleria('2024', 1)">&#10095;</button>
+                    </div>
+                </div>
+            </div>
             <div class="galeria-grid">
-                <img src="images/galeria/encontro1.jpg" alt="Encontro 1">
-                <img src="images/galeria/encontro2.jpg" alt="Encontro 2">
-                <img src="images/galeria/encontro3.jpg" alt="Encontro 3">
-                <!-- Adicione mais imagens conforme desejar -->
+                <!-- Outras imagens em grid, se desejar -->
             </div>
         </div>
     </section>
@@ -701,27 +752,45 @@
         });
 
         // Carrossel de Produtos
-        const imagensCamiseta = [
-            'images/produtos/camiseta1.jpg',
-            'images/produtos/camiseta2.jpg',
-            'images/produtos/camiseta3.jpg'
+        const imagensGarrafa = [
+            'images/produtos/garrafa1.jpg',
+            'images/produtos/garrafa2.jpg'
         ];
-        const imagensCaneco = [
-            'images/produtos/caneco1.jpg',
-            'images/produtos/caneco2.jpg',
-            'images/produtos/caneco3.jpg'
+        const imagensSacola = [
+            'images/produtos/sacola1.png',
+            'images/produtos/sacola2.png'
         ];
-        let idxCamiseta = 0;
-        let idxCaneco = 0;
+        let idxGarrafa = 0;
+        let idxSacola = 0;
         function mudarImagem(produto, direcao) {
-            if(produto === 'camiseta') {
-                idxCamiseta = (idxCamiseta + direcao + imagensCamiseta.length) % imagensCamiseta.length;
-                document.getElementById('img-camiseta').src = imagensCamiseta[idxCamiseta];
-            } else if(produto === 'caneco') {
-                idxCaneco = (idxCaneco + direcao + imagensCaneco.length) % imagensCaneco.length;
-                document.getElementById('img-caneco').src = imagensCaneco[idxCaneco];
+            if(produto === 'garrafa') {
+                idxGarrafa = (idxGarrafa + direcao + imagensGarrafa.length) % imagensGarrafa.length;
+                document.getElementById('img-garrafa').src = imagensGarrafa[idxGarrafa];
+            } else if(produto === 'sacola') {
+                idxSacola = (idxSacola + direcao + imagensSacola.length) % imagensSacola.length;
+                document.getElementById('img-sacola').src = imagensSacola[idxSacola];
             }
+        }
+
+        // Carrossel de Galeria
+        const imagensGaleria = [
+            'images/galeria/2023/Imagem1.jpg',
+            'images/galeria/2023/Imagem2.jpg',
+            'images/galeria/2023/Imagem3.jpg',
+            'images/galeria/2023/Imagem4.jpg',
+            'images/galeria/2023/Imagem5.jpg',
+            'images/galeria/2023/Imagem6.jpg',
+            'images/galeria/2024/Imagem1.jpg',
+            'images/galeria/2024/Imagem2.jpg',
+            'images/galeria/2024/Imagem3.jpg',
+            'images/galeria/2024/Imagem4.jpg',
+            'images/galeria/2024/Imagem5.jpg'
+        ];
+        let idxGaleria = 0;
+        function mudarGaleria(ano, direcao) {
+            idxGaleria = (idxGaleria + direcao + imagensGaleria.length) % imagensGaleria.length;
+            document.getElementById('img-galeria-' + ano).src = imagensGaleria[idxGaleria];
         }
     </script>
 </body>
-</html> 
+</html>
