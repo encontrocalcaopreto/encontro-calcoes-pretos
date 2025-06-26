@@ -770,7 +770,7 @@
 
     <!-- Modal para imagens -->
     <div class="modal-img-bg" id="modal-img-bg" onclick="fecharModalImg(event)">
-        <span class="close-modal" onclick="fecharModalImg(event)">&times;</span>
+        <span class="close-modal" id="close-modal">&times;</span>
         <button class="carousel-btn prev" id="modal-prev" style="position:absolute;left:40px;top:50%;transform:translateY(-50%);z-index:10000;font-size:2.5rem;display:none;">&#10094;</button>
         <img id="modal-img" src="" alt="Imagem em destaque">
         <button class="carousel-btn next" id="modal-next" style="position:absolute;right:40px;top:50%;transform:translateY(-50%);z-index:10000;font-size:2.5rem;display:none;">&#10095;</button>
@@ -943,6 +943,11 @@
             let idx = galeria2024.indexOf(this.src.replace(window.location.origin + '/', ''));
             if(idx === -1) idx = 0;
             abrirModalImg(this.src, galeria2024, idx, '2024');
+        };
+
+        document.getElementById('close-modal').onclick = function(e) {
+            e.stopPropagation();
+            document.getElementById('modal-img-bg').classList.remove('active');
         };
     </script>
 </body>
