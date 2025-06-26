@@ -444,9 +444,46 @@
         .galeria-carrosseis {
             display: flex;
             gap: 2rem;
+            justify-content: center;
         }
-        .galeria-carrossel-box {
-            text-align: center;
+        .galeria-carrossel-box .carousel-img {
+            width: 350px;
+            height: 250px;
+            object-fit: cover;
+            cursor: pointer;
+        }
+        .produtos-lista .carousel-img, .produtos-lista img.carousel-img {
+            cursor: pointer;
+        }
+
+        /* Modal para imagens */
+        .modal-img-bg {
+            display: none;
+            position: fixed;
+            z-index: 9999;
+            left: 0; top: 0; right: 0; bottom: 0;
+            background: rgba(0,0,0,0.8);
+            align-items: center;
+            justify-content: center;
+        }
+        .modal-img-bg.active {
+            display: flex;
+        }
+        .modal-img-bg img {
+            max-width: 90vw;
+            max-height: 90vh;
+            border-radius: 12px;
+            box-shadow: 0 8px 32px rgba(0,0,0,0.5);
+            background: #fff;
+        }
+        .modal-img-bg .close-modal {
+            position: absolute;
+            top: 30px;
+            right: 40px;
+            font-size: 2.5rem;
+            color: #fff;
+            cursor: pointer;
+            z-index: 10000;
         }
     </style>
 </head>
@@ -701,6 +738,12 @@
         </div>
     </footer>
 
+    <!-- Modal para imagens -->
+    <div class="modal-img-bg" id="modal-img-bg" onclick="fecharModalImg(event)">
+        <span class="close-modal" onclick="fecharModalImg(event)">&times;</span>
+        <img id="modal-img" src="" alt="Imagem em destaque">
+    </div>
+
     <script>
         // Smooth scrolling for navigation links
         document.querySelectorAll('a[href^="#"]').forEach(anchor => {
@@ -790,6 +833,33 @@
         function mudarGaleria(ano, direcao) {
             idxGaleria = (idxGaleria + direcao + imagensGaleria.length) % imagensGaleria.length;
             document.getElementById('img-galeria-' + ano).src = imagensGaleria[idxGaleria];
+        }
+
+        function fecharModalImg(event) {
+            const modal = document.getElementById('modal-img-bg');
+            if (event.target === modal) {
+                modal.classList.remove('active');
+            }
+        }
+
+        // Adicionar eventos para abrir modal nas imagens dos produtos
+        document.querySelectorAll('.produtos-lista .carousel-img').forEach(img => {
+            img.addEventListener('click', function() {
+                abrirModalImg(this.src);
+            });
+        });
+        // Adicionar eventos para abrir modal nas imagens dos carrosseis da galeria
+        document.getElementById('img-galeria-2023').addEventListener('click', function() {
+            abrirModalImg(this.src);
+        });
+        document.getElementById('img-galeria-2024').addEventListener('click', function() {
+            abrirModalImg(this.src);
+        });
+        function abrirModalImg(src) {
+            const modal = document.getElementById('modal-img-bg');
+            const modalImg = document.getElementById('modal-img');
+            modalImg.src = src;
+            modal.classList.add('active');
         }
     </script>
 </body>
