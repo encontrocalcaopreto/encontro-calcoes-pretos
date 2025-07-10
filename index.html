@@ -2,7 +2,7 @@
 <html lang="pt-BR">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <title>Encontro Nacional dos Calções Pretos 2025</title>
     <link rel="icon" type="image/png" href="images/logos/esefex-logo.png">
     <style>
@@ -18,6 +18,7 @@
             color: #333;
             background: linear-gradient(135deg, #e1ad01 0%, #ffd700 100%);
             min-height: 100vh;
+            padding-top: 80px; /* Compensa o header fixo */
         }
 
         .container {
@@ -35,6 +36,7 @@
             top: 0;
             z-index: 1000;
             transition: all 0.3s ease;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
         }
 
         nav {
@@ -118,6 +120,12 @@
             font-size: 1.1rem;
             transition: all 0.3s ease;
             box-shadow: 0 4px 15px rgba(225, 173, 1, 0.3);
+            touch-action: manipulation;
+            -webkit-tap-highlight-color: transparent;
+            min-height: 44px;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
         }
 
         .cta-button:hover {
@@ -315,6 +323,9 @@
             border-radius: 8px;
             font-size: 1rem;
             transition: border-color 0.3s ease;
+            -webkit-appearance: none;
+            -moz-appearance: none;
+            appearance: none;
         }
 
         .form-group input:focus,
@@ -332,6 +343,10 @@
             font-weight: bold;
             cursor: pointer;
             transition: all 0.3s ease;
+            touch-action: manipulation;
+            -webkit-tap-highlight-color: transparent;
+            min-height: 44px;
+            font-size: 1rem;
         }
 
         .submit-btn:hover {
@@ -359,24 +374,382 @@
             }
         }
 
+        /* Menu Mobile */
+        .mobile-menu-toggle {
+            display: none;
+            background: none;
+            border: none;
+            font-size: 1.5rem;
+            color: #111;
+            cursor: pointer;
+            padding: 0.5rem;
+        }
+
+        .mobile-menu-toggle:hover {
+            color: #e1ad01;
+        }
+
         /* Responsive */
         @media (max-width: 768px) {
+            body {
+                padding-top: 70px; /* Menor padding para mobile */
+            }
+            
+            /* Header e Navegação */
+            .mobile-menu-toggle {
+                display: block;
+            }
+
             .nav-links {
                 display: none;
+                position: absolute;
+                top: 100%;
+                left: 0;
+                right: 0;
+                background: #e1ad01;
+                flex-direction: column;
+                padding: 1rem 0;
+                box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+            }
+
+            .nav-links.active {
+                display: flex;
+            }
+
+            .nav-links li {
+                margin: 0.5rem 0;
+            }
+
+            .nav-links a {
+                padding: 0.5rem 2rem;
+                display: block;
+                border-bottom: 1px solid rgba(255,255,255,0.1);
+            }
+
+            .logo {
+                font-size: 1.2rem;
+            }
+
+            .logo img {
+                height: 28px !important;
+            }
+
+            /* Hero Section */
+            .hero {
+                height: 70vh;
+                padding: 2rem 1rem;
             }
 
             .hero h1 {
-                font-size: 2.5rem;
+                font-size: 2rem;
+                margin-bottom: 1rem;
+                text-shadow: 2px 2px 6px rgba(0,0,0,0.8), 0 1px 0 #fff;
             }
 
-            .about-content,
+            .hero p {
+                font-size: 1.1rem;
+                margin-bottom: 1.5rem;
+            }
+
+            .cta-button {
+                padding: 12px 30px;
+                font-size: 1rem;
+            }
+
+            /* Container */
+            .container {
+                padding: 0 15px;
+            }
+
+            /* Sections */
+            section {
+                padding: 3rem 0;
+            }
+
+            .section-title {
+                font-size: 2rem;
+                margin-bottom: 2rem;
+            }
+
+            /* About Section */
+            .about-content {
+                grid-template-columns: 1fr;
+                gap: 2rem;
+            }
+
+            .about-text {
+                font-size: 1rem;
+                line-height: 1.6;
+            }
+
+            .military-badge img {
+                height: 300px !important;
+            }
+
+            /* Event Info */
+            .event-info {
+                grid-template-columns: 1fr;
+                gap: 1.5rem;
+            }
+
+            .info-card {
+                padding: 1.5rem;
+            }
+
+            /* Program Section */
+            .program-item {
+                flex-direction: column;
+                gap: 1rem;
+                padding: 1rem;
+            }
+
+            .time {
+                min-width: auto;
+                text-align: center;
+                font-size: 1.1rem;
+            }
+
+            /* Contact Section */
             .contact-content {
                 grid-template-columns: 1fr;
                 gap: 2rem;
             }
 
-            .event-info {
-                grid-template-columns: 1fr;
+            .contact-form {
+                padding: 1.5rem;
+            }
+
+            /* Produtos */
+            .produtos-lista {
+                gap: 1.5rem;
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .produto {
+                max-width: 100%;
+                flex: none;
+                width: 100%;
+                padding: 1.5rem;
+                margin: 0;
+            }
+
+            .produto h3 {
+                font-size: 1.3rem;
+                margin-bottom: 1rem;
+            }
+
+            .produto .preco {
+                font-size: 1.2rem;
+                font-weight: bold;
+                color: #e1ad01;
+                margin-top: 1rem;
+            }
+
+            .carousel-img {
+                width: 150px;
+                height: 150px;
+                margin: 0 0.5rem;
+            }
+
+            .carousel-btn {
+                width: 32px;
+                height: 32px;
+                font-size: 1.2rem;
+            }
+
+            /* Galeria */
+            .galeria-carrosseis {
+                flex-direction: column;
+                gap: 2rem;
+            }
+
+            .galeria-carrossel-box .carousel-img {
+                width: 280px;
+                height: 200px;
+            }
+
+            .galeria-grid {
+                grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+                gap: 1rem;
+            }
+
+            .galeria-grid img {
+                height: 120px;
+            }
+
+            /* Modal */
+            .modal-img-bg .close-modal {
+                top: 20px;
+                right: 20px;
+                font-size: 2rem;
+            }
+
+            .modal-img-bg img {
+                max-width: 95vw;
+                max-height: 80vh;
+            }
+
+            #modal-prev,
+            #modal-next {
+                width: 40px !important;
+                height: 40px !important;
+                font-size: 1.5rem !important;
+                left: 10px !important;
+            }
+
+            #modal-next {
+                right: 10px !important;
+                left: auto !important;
+            }
+
+            /* Footer */
+            footer {
+                padding: 1.5rem 0;
+            }
+        }
+
+        /* Tablets */
+        @media (min-width: 769px) and (max-width: 1024px) {
+            .hero h1 {
+                font-size: 3rem;
+            }
+
+            .about-content,
+            .contact-content {
+                gap: 3rem;
+            }
+
+            .produtos-lista {
+                gap: 2rem;
+            }
+
+            .produto {
+                flex: 1 1 250px;
+            }
+
+            .galeria-carrossel-box .carousel-img {
+                width: 300px;
+                height: 220px;
+            }
+        }
+
+        /* Telas muito pequenas */
+        @media (max-width: 480px) {
+            body {
+                padding-top: 60px;
+            }
+
+            .hero h1 {
+                font-size: 1.6rem;
+                line-height: 1.2;
+            }
+
+            .hero p {
+                font-size: 0.9rem;
+            }
+
+            .section-title {
+                font-size: 1.6rem;
+            }
+
+            .container {
+                padding: 0 10px;
+            }
+
+            .info-card {
+                padding: 1rem;
+            }
+
+            .produto {
+                padding: 1rem;
+            }
+
+            .produto h3 {
+                font-size: 1.2rem;
+            }
+
+            .carousel-img {
+                width: 100px;
+                height: 100px;
+            }
+
+            .galeria-carrossel-box .carousel-img {
+                width: 220px;
+                height: 160px;
+            }
+
+            .contact-form {
+                padding: 1rem;
+            }
+
+            .nav-links a {
+                padding: 0.8rem 1.5rem;
+                font-size: 1rem;
+            }
+
+            .logo {
+                font-size: 1rem;
+            }
+
+            .logo img {
+                height: 24px !important;
+            }
+
+            #modal-prev,
+            #modal-next {
+                width: 35px !important;
+                height: 35px !important;
+                font-size: 1.2rem !important;
+                left: 5px !important;
+            }
+
+            #modal-next {
+                right: 5px !important;
+                left: auto !important;
+            }
+
+            .modal-img-bg .close-modal {
+                top: 15px;
+                right: 15px;
+                font-size: 1.8rem;
+            }
+        }
+
+        /* Orientação Landscape em dispositivos móveis */
+        @media (max-width: 768px) and (orientation: landscape) {
+            .hero {
+                height: 100vh;
+                padding: 1rem;
+            }
+
+            .hero h1 {
+                font-size: 1.8rem;
+            }
+
+            .section {
+                padding: 2rem 0;
+            }
+
+            .produtos-lista {
+                flex-direction: row;
+                flex-wrap: wrap;
+                gap: 1rem;
+            }
+
+            .produto {
+                flex: 1 1 200px;
+                max-width: 200px;
+            }
+
+            .galeria-carrosseis {
+                flex-direction: row;
+                gap: 1rem;
+            }
+
+            .galeria-carrossel-box .carousel-img {
+                width: 200px;
+                height: 150px;
             }
         }
 
@@ -421,6 +794,8 @@
             font-size: 1.5rem;
             cursor: pointer;
             transition: background 0.2s;
+            touch-action: manipulation;
+            -webkit-tap-highlight-color: transparent;
         }
         .carousel-btn:hover {
             background: #ffd700;
@@ -485,6 +860,7 @@
             border-radius: 12px;
             box-shadow: 0 8px 32px rgba(0,0,0,0.5);
             background: #fff;
+            object-fit: contain;
         }
         .modal-img-bg .close-modal {
             position: absolute;
@@ -518,7 +894,8 @@
     <header>
         <nav class="container">
             <a href="#" class="logo"><img src="images/logos/esefex-logo.png" alt="Logo EsEFEx" style="height:32px;vertical-align:middle;margin-right:8px;">Encontro Nacional 2025</a>
-            <ul class="nav-links">
+            <button class="mobile-menu-toggle" id="mobile-menu-toggle">☰</button>
+            <ul class="nav-links" id="nav-links">
                 <li><a href="#topo">Início</a></li>
                 <li><a href="#about">Sobre</a></li>
                 <li><a href="#program">Programação</a></li>
@@ -533,8 +910,8 @@
     <section class="hero">
         <div class="hero-content" style="position:relative; display:flex; align-items:center; justify-content:center;">
             <img src="images/banner-encontro.png" alt="Banner Encontro" style="max-width: 1500px; width: 90vw; display: block; margin-left: auto; margin-right: auto; margin-bottom: 2rem;">
-            <div style="position:absolute; left:0; right:0; top:0; bottom:0; display:flex; flex-direction:column; align-items:center; justify-content:center; pointer-events:none;">
-                <h1 style="color:#111; text-shadow: 2px 2px 8px #fff, 0 1px 0 #fff; pointer-events:auto;">Encontro Nacional dos Calções Pretos</h1>
+            <div style="position:absolute; left:0; right:0; top:0; bottom:0; display:flex; flex-direction:column; align-items:center; justify-content:center; pointer-events:none; padding: 1rem;">
+                <h1 style="color:#111; text-shadow: 2px 2px 8px #fff, 0 1px 0 #fff; pointer-events:auto; text-align: center;">Encontro Nacional dos Calções Pretos</h1>
                 <a href="https://www.sympla.com.br/evento/encontro-nacional-dos-calCOes-pretos-2025/3012780" class="cta-button" style="margin-top:2rem; pointer-events:auto;" target="_blank" rel="noopener noreferrer">Inscreva-se Agora</a>
             </div>
         </div>
@@ -772,12 +1149,38 @@
     <!-- Modal para imagens -->
     <div class="modal-img-bg" id="modal-img-bg" onclick="fecharModalImg(event)">
         <span class="close-modal" id="close-modal">&times;</span>
-        <button class="carousel-btn prev" id="modal-prev" style="position:absolute;left:40px;top:50%;transform:translateY(-50%);z-index:10000;font-size:2.5rem;display:none;">&#10094;</button>
+        <button class="carousel-btn prev" id="modal-prev" style="position:absolute;left:20px;top:50%;transform:translateY(-50%);z-index:10000;font-size:2rem;display:none;width:50px;height:50px;">&#10094;</button>
         <img id="modal-img" src="" alt="Imagem em destaque">
-        <button class="carousel-btn next" id="modal-next" style="position:absolute;right:40px;top:50%;transform:translateY(-50%);z-index:10000;font-size:2.5rem;display:none;">&#10095;</button>
+        <button class="carousel-btn next" id="modal-next" style="position:absolute;right:20px;top:50%;transform:translateY(-50%);z-index:10000;font-size:2rem;display:none;width:50px;height:50px;">&#10095;</button>
     </div>
 
     <script>
+        // Menu Mobile
+        const mobileMenuToggle = document.getElementById('mobile-menu-toggle');
+        const navLinks = document.getElementById('nav-links');
+
+        mobileMenuToggle.addEventListener('click', function() {
+            navLinks.classList.toggle('active');
+            // Muda o ícone do menu
+            this.textContent = navLinks.classList.contains('active') ? '✕' : '☰';
+        });
+
+        // Fecha o menu quando clica em um link
+        document.querySelectorAll('.nav-links a').forEach(link => {
+            link.addEventListener('click', function() {
+                navLinks.classList.remove('active');
+                mobileMenuToggle.textContent = '☰';
+            });
+        });
+
+        // Fecha o menu quando clica fora dele
+        document.addEventListener('click', function(e) {
+            if (!e.target.closest('nav')) {
+                navLinks.classList.remove('active');
+                mobileMenuToggle.textContent = '☰';
+            }
+        });
+
         // Smooth scrolling for navigation links
         document.querySelectorAll('a[href^="#"]').forEach(anchor => {
             anchor.addEventListener('click', function (e) {
