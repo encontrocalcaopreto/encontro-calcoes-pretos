@@ -221,7 +221,6 @@
         <section class="hero" id="topo">
             <div class="hero-content">
                 <h1>Encontro Nacional dos Calções Pretos</h1>
-                <p>Celebrando a tradição, a camaradagem e a excelência na Educação Física.</p>
                 <a href="https://www.sympla.com.br/evento/encontro-nacional-dos-calCOes-pretos-2025/3012780" class="cta-button" target="_blank" rel="noopener noreferrer">Inscreva-se Agora</a>
         </div>
     </section>
@@ -353,20 +352,25 @@
         <section id="galeria" class="bg-light">
         <div class="container">
             <h2 class="section-title">Galeria de Encontros Anteriores</h2>
-            <div class="galeria-grid">
-                    <!-- Encontro 2023 -->
-                    <img src="images/galeria/2023/Imagem1.jpg" alt="Foto do encontro de 2023" class="galeria-img" loading="lazy">
-                    <img src="images/galeria/2023/Imagem2.jpg" alt="Foto do encontro de 2023" class="galeria-img" loading="lazy">
-                    <img src="images/galeria/2023/Imagem3.jpg" alt="Foto do encontro de 2023" class="galeria-img" loading="lazy">
-                    <img src="images/galeria/2023/Imagem4.jpg" alt="Foto do encontro de 2023" class="galeria-img" loading="lazy">
-                    <img src="images/galeria/2023/Imagem5.jpg" alt="Foto do encontro de 2023" class="galeria-img" loading="lazy">
-                    <img src="images/galeria/2023/Imagem6.jpg" alt="Foto do encontro de 2023" class="galeria-img" loading="lazy">
-                    <!-- Encontro 2024 -->
-                    <img src="images/galeria/2024/Imagem1.jpg" alt="Foto do encontro de 2024" class="galeria-img" loading="lazy">
-                    <img src="images/galeria/2024/Imagem2.jpg" alt="Foto do encontro de 2024" class="galeria-img" loading="lazy">
-                    <img src="images/galeria/2024/Imagem3.jpg" alt="Foto do encontro de 2024" class="galeria-img" loading="lazy">
-                    <img src="images/galeria/2024/Imagem4.jpg" alt="Foto do encontro de 2024" class="galeria-img" loading="lazy">
-                    <img src="images/galeria/2024/Imagem5.jpg" alt="Foto do encontro de 2024" class="galeria-img" loading="lazy">
+            <div class="galeria-carrosseis" style="display: flex; gap: 2rem; justify-content: center; flex-wrap: wrap;">
+                <!-- Carrossel 2023 -->
+                <div class="galeria-carrossel-box">
+                    <h3>Encontro 2023</h3>
+                    <div class="carousel" id="carousel-2023">
+                        <button class="carousel-btn prev" aria-label="Imagem anterior">&#10094;</button>
+                        <img src="images/galeria/2023/Imagem1.jpg" alt="2023 Imagem 1" class="carousel-img" id="img-galeria-2023">
+                        <button class="carousel-btn next" aria-label="Próxima imagem">&#10095;</button>
+                    </div>
+                </div>
+                <!-- Carrossel 2024 -->
+                <div class="galeria-carrossel-box">
+                    <h3>Encontro 2024</h3>
+                    <div class="carousel" id="carousel-2024">
+                        <button class="carousel-btn prev" aria-label="Imagem anterior">&#10094;</button>
+                        <img src="images/galeria/2024/Imagem1.jpg" alt="2024 Imagem 1" class="carousel-img" id="img-galeria-2024">
+                        <button class="carousel-btn next" aria-label="Próxima imagem">&#10095;</button>
+                    </div>
+                </div>
             </div>
         </div>
     </section>
@@ -413,105 +417,147 @@
         <img id="modal-img" src="" alt="Imagem em destaque">
         <button class="modal-nav next" id="modal-next" aria-label="Próxima">&#10095;</button>
     </div>
-    <script>
-        document.addEventListener('DOMContentLoaded', function() {
-        const mobileMenuToggle = document.getElementById('mobile-menu-toggle');
-        const navLinks = document.getElementById('nav-links');
-            if (mobileMenuToggle && navLinks) {
-                mobileMenuToggle.addEventListener('click', (event) => {
-                    event.stopPropagation();
-            navLinks.classList.toggle('active');
-                    mobileMenuToggle.textContent = navLinks.classList.contains('active') ? '✕' : '☰';
-        });
-                navLinks.addEventListener('click', () => {
-                navLinks.classList.remove('active');
-                mobileMenuToggle.textContent = '☰';
-            });
-            }
-            document.addEventListener('click', (event) => {
-                if (navLinks.classList.contains('active') && !navLinks.contains(event.target) && !mobileMenuToggle.contains(event.target)) {
-                navLinks.classList.remove('active');
-                mobileMenuToggle.textContent = '☰';
-            }
-        });
-            function inicializarCarrossel(containerSelector, imagesArray) {
-                const container = document.querySelector(containerSelector);
-                if (!container || imagesArray.length === 0) return;
-                const prevBtn = container.querySelector('.prev');
-                const nextBtn = container.querySelector('.next');
-                const imgElement = container.querySelector('.carousel-img');
-                let currentIndex = 0;
-                function updateImage() {
-                    imgElement.src = imagesArray[currentIndex];
-                }
-                prevBtn.addEventListener('click', () => {
-                    currentIndex = (currentIndex - 1 + imagesArray.length) % imagesArray.length;
-                    updateImage();
-                });
-                nextBtn.addEventListener('click', () => {
-                    currentIndex = (currentIndex + 1) % imagesArray.length;
-                    updateImage();
-        });
-            }
-            inicializarCarrossel('#carousel-garrafa', [
-            'images/produtos/garrafa1.jpg',
-            'images/produtos/garrafa2.jpg'
-            ]);
-            inicializarCarrossel('#carousel-sacola', [
-            'images/produtos/sacola1.png',
-            'images/produtos/sacola2.png'
-            ]);
-            const modal = document.getElementById('modal-bg');
-            const modalImg = document.getElementById('modal-img');
-            const closeModalBtn = document.getElementById('close-modal');
-            const modalPrevBtn = document.getElementById('modal-prev');
-            const modalNextBtn = document.getElementById('modal-next');
-            let modalImages = [];
-            let currentModalIndex = 0;
-            function abrirModal(images, index) {
-                modalImages = images;
-                currentModalIndex = index;
-                modalImg.src = modalImages[currentModalIndex];
-                modal.classList.add('active');
-                modalPrevBtn.style.display = modalImages.length > 1 ? 'block' : 'none';
-                modalNextBtn.style.display = modalImages.length > 1 ? 'block' : 'none';
-            }
-            const galeriaImagens = document.querySelectorAll('.galeria-img');
-            const galeriaSrcs = Array.from(galeriaImagens).map(img => img.src);
-            galeriaImagens.forEach((img, index) => {
-                img.addEventListener('click', () => {
-                    abrirModal(galeriaSrcs, index);
-                });
-            });
-            document.querySelectorAll('.produto:not(:has(.carousel)) .produto-img').forEach(img => {
-                img.addEventListener('click', () => {
-                    abrirModal([img.src], 0);
-                });
-            });
-            modalPrevBtn.addEventListener('click', () => {
-                currentModalIndex = (currentModalIndex - 1 + modalImages.length) % modalImages.length;
-                modalImg.src = modalImages[currentModalIndex];
-            });
-            modalNextBtn.addEventListener('click', () => {
-                currentModalIndex = (currentModalIndex + 1) % modalImages.length;
-                modalImg.src = modalImages[currentModalIndex];
-            });
-            closeModalBtn.addEventListener('click', () => modal.classList.remove('active'));
-            modal.addEventListener('click', (event) => {
-            if (event.target === modal) {
-                modal.classList.remove('active');
-            }
-            });
-        });
-    </script>
     <button id="btn-topo" aria-label="Voltar ao topo" style="display:none;position:fixed;bottom:30px;right:30px;z-index:999;background:#e1ad01;color:#fff;border:none;border-radius:50%;width:48px;height:48px;font-size:2rem;cursor:pointer;">↑</button>
     <script>
-window.addEventListener('scroll', function() {
-  document.getElementById('btn-topo').style.display = window.scrollY > 300 ? 'block' : 'none';
+document.addEventListener('DOMContentLoaded', function() {
+    const mobileMenuToggle = document.getElementById('mobile-menu-toggle');
+    const navLinks = document.getElementById('nav-links');
+    if (mobileMenuToggle && navLinks) {
+        mobileMenuToggle.addEventListener('click', (event) => {
+            event.stopPropagation();
+            navLinks.classList.toggle('active');
+            mobileMenuToggle.textContent = navLinks.classList.contains('active') ? '✕' : '☰';
+        });
+        navLinks.addEventListener('click', () => {
+            navLinks.classList.remove('active');
+            mobileMenuToggle.textContent = '☰';
+        });
+    }
+    document.addEventListener('click', (event) => {
+        if (navLinks.classList.contains('active') && !navLinks.contains(event.target) && !mobileMenuToggle.contains(event.target)) {
+            navLinks.classList.remove('active');
+            mobileMenuToggle.textContent = '☰';
+        }
+    });
+    function inicializarCarrossel(containerSelector, imagesArray) {
+        const container = document.querySelector(containerSelector);
+        if (!container || imagesArray.length === 0) return;
+        const prevBtn = container.querySelector('.prev');
+        const nextBtn = container.querySelector('.next');
+        const imgElement = container.querySelector('.carousel-img');
+        let currentIndex = 0;
+        function updateImage() {
+            imgElement.src = imagesArray[currentIndex];
+        }
+        prevBtn.addEventListener('click', () => {
+            currentIndex = (currentIndex - 1 + imagesArray.length) % imagesArray.length;
+            updateImage();
+        });
+        nextBtn.addEventListener('click', () => {
+            currentIndex = (currentIndex + 1) % imagesArray.length;
+            updateImage();
+        });
+    }
+    inicializarCarrossel('#carousel-garrafa', [
+        'images/produtos/garrafa1.jpg',
+        'images/produtos/garrafa2.jpg'
+    ]);
+    inicializarCarrossel('#carousel-sacola', [
+        'images/produtos/sacola1.png',
+        'images/produtos/sacola2.png'
+    ]);
+    const modal = document.getElementById('modal-bg');
+    const modalImg = document.getElementById('modal-img');
+    const closeModalBtn = document.getElementById('close-modal');
+    const modalPrevBtn = document.getElementById('modal-prev');
+    const modalNextBtn = document.getElementById('modal-next');
+    let modalImages = [];
+    let currentModalIndex = 0;
+    function abrirModal(images, index) {
+        modalImages = images;
+        currentModalIndex = index;
+        modalImg.src = modalImages[currentModalIndex];
+        modal.classList.add('active');
+        modalPrevBtn.style.display = modalImages.length > 1 ? 'block' : 'none';
+        modalNextBtn.style.display = modalImages.length > 1 ? 'block' : 'none';
+    }
+    // Carrossel Galeria 2023
+    inicializarCarrossel('#carousel-2023', [
+        'images/galeria/2023/Imagem1.jpg',
+        'images/galeria/2023/Imagem2.jpg',
+        'images/galeria/2023/Imagem3.jpg',
+        'images/galeria/2023/Imagem4.jpg',
+        'images/galeria/2023/Imagem5.jpg',
+        'images/galeria/2023/Imagem6.jpg'
+    ]);
+    // Carrossel Galeria 2024
+    inicializarCarrossel('#carousel-2024', [
+        'images/galeria/2024/Imagem1.jpg',
+        'images/galeria/2024/Imagem2.jpg',
+        'images/galeria/2024/Imagem3.jpg',
+        'images/galeria/2024/Imagem4.jpg',
+        'images/galeria/2024/Imagem5.jpg'
+    ]);
+    document.querySelectorAll('.produto:not(:has(.carousel)) .produto-img').forEach(img => {
+        img.addEventListener('click', () => {
+            abrirModal([img.src], 0);
+        });
+    });
+    modalPrevBtn.addEventListener('click', () => {
+        currentModalIndex = (currentModalIndex - 1 + modalImages.length) % modalImages.length;
+        modalImg.src = modalImages[currentModalIndex];
+    });
+    modalNextBtn.addEventListener('click', () => {
+        currentModalIndex = (currentModalIndex + 1) % modalImages.length;
+        modalImg.src = modalImages[currentModalIndex];
+    });
+    closeModalBtn.addEventListener('click', () => modal.classList.remove('active'));
+    modal.addEventListener('click', (event) => {
+        if (event.target === modal) {
+            modal.classList.remove('active');
+        }
+    });
+    // Botão voltar ao topo
+    window.addEventListener('scroll', function() {
+        document.getElementById('btn-topo').style.display = window.scrollY > 300 ? 'block' : 'none';
+    });
+    document.getElementById('btn-topo').onclick = function() {
+        window.scrollTo({top:0,behavior:'smooth'});
+    };
+    // Adicionar evento de clique para abrir o modal ao clicar nas imagens dos carrosseis:
+    document.getElementById('img-galeria-2023').onclick = function() {
+        abrirModal([
+            'images/galeria/2023/Imagem1.jpg',
+            'images/galeria/2023/Imagem2.jpg',
+            'images/galeria/2023/Imagem3.jpg',
+            'images/galeria/2023/Imagem4.jpg',
+            'images/galeria/2023/Imagem5.jpg',
+            'images/galeria/2023/Imagem6.jpg'
+        ], Array.from([
+            'images/galeria/2023/Imagem1.jpg',
+            'images/galeria/2023/Imagem2.jpg',
+            'images/galeria/2023/Imagem3.jpg',
+            'images/galeria/2023/Imagem4.jpg',
+            'images/galeria/2023/Imagem5.jpg',
+            'images/galeria/2023/Imagem6.jpg'
+        ]).indexOf(this.src));
+    };
+    document.getElementById('img-galeria-2024').onclick = function() {
+        abrirModal([
+            'images/galeria/2024/Imagem1.jpg',
+            'images/galeria/2024/Imagem2.jpg',
+            'images/galeria/2024/Imagem3.jpg',
+            'images/galeria/2024/Imagem4.jpg',
+            'images/galeria/2024/Imagem5.jpg'
+        ], Array.from([
+            'images/galeria/2024/Imagem1.jpg',
+            'images/galeria/2024/Imagem2.jpg',
+            'images/galeria/2024/Imagem3.jpg',
+            'images/galeria/2024/Imagem4.jpg',
+            'images/galeria/2024/Imagem5.jpg'
+        ]).indexOf(this.src));
+    };
 });
-document.getElementById('btn-topo').onclick = function() {
-  window.scrollTo({top:0,behavior:'smooth'});
-};
 </script>
 </body>
 </html>
