@@ -263,7 +263,15 @@
         footer { background: var(--cor-texto-principal); color: var(--cor-texto-claro); text-align: center; padding: 2rem 0; }
         .modal-bg { display: none; position: fixed; z-index: 9999; left: 0; top: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.85); align-items: center; justify-content: center; }
         .modal-bg.active { display: flex; }
-        .modal-bg img { max-width: 90vw; max-height: 80vh; border-radius: 8px; }
+        .modal-bg img {
+            max-width: 95vw;
+            max-height: 90vh;
+            border-radius: 8px;
+            display: block;
+            margin: 0 auto;
+            background: #fff;
+            object-fit: contain;
+        }
         .close-modal { position: absolute; top: 20px; right: 30px; font-size: 2.5rem; color: #fff; cursor: pointer; }
         .modal-nav { position: absolute; top: 50%; transform: translateY(-50%); background: rgba(0,0,0,0.5); color: #fff; border: none; border-radius: 50%; width: 50px; height: 50px; font-size: 2rem; cursor: pointer; }
         .modal-nav.prev { left: 20px; }
@@ -285,17 +293,18 @@
         .galeria-carrossel-box h3 {
             margin-bottom: 1rem;
         }
-        .galeria-carousel-img {
+        .galeria-carousel-img, .carousel-img {
             width: 100%;
-            max-width: 400px;
-            height: 260px;
+            max-width: 320px;
+            height: 320px;
             object-fit: cover;
             border-radius: 10px;
             box-shadow: 0 2px 8px rgba(0,0,0,0.1);
             cursor: pointer;
+            transition: box-shadow 0.2s;
         }
         @media (max-width: 600px) {
-          .galeria-carousel-img { max-width: 95vw; height: 180px; }
+          .galeria-carousel-img, .carousel-img { max-width: 98vw; height: 200px; }
         }
         .galeria-carrosseis {
             display: flex;
