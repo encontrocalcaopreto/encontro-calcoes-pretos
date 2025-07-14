@@ -660,36 +660,29 @@ document.addEventListener('DOMContentLoaded', function() {
     };
     // Adicionar evento de clique para abrir o modal ao clicar nas imagens dos carrosseis:
     document.getElementById('img-galeria-2023').onclick = function() {
-        abrirModal([
+        const imagens = [
             'images/galeria/2023/Imagem1.jpg',
             'images/galeria/2023/Imagem2.jpg',
             'images/galeria/2023/Imagem3.jpg',
             'images/galeria/2023/Imagem4.jpg',
             'images/galeria/2023/Imagem5.jpg',
             'images/galeria/2023/Imagem6.jpg'
-        ], Array.from([
-            'images/galeria/2023/Imagem1.jpg',
-            'images/galeria/2023/Imagem2.jpg',
-            'images/galeria/2023/Imagem3.jpg',
-            'images/galeria/2023/Imagem4.jpg',
-            'images/galeria/2023/Imagem5.jpg',
-            'images/galeria/2023/Imagem6.jpg'
-        ]).indexOf(this.src));
+        ];
+        const srcAtual = this.src.split('/').slice(-2).join('/'); // pega '2023/ImagemX.jpg'
+        const idx = imagens.findIndex(img => img.endsWith(srcAtual));
+        abrirModal(imagens, idx === -1 ? 0 : idx);
     };
     document.getElementById('img-galeria-2024').onclick = function() {
-        abrirModal([
+        const imagens = [
             'images/galeria/2024/Imagem1.jpg',
             'images/galeria/2024/Imagem2.jpg',
             'images/galeria/2024/Imagem3.jpg',
             'images/galeria/2024/Imagem4.jpg',
             'images/galeria/2024/Imagem5.jpg'
-        ], Array.from([
-            'images/galeria/2024/Imagem1.jpg',
-            'images/galeria/2024/Imagem2.jpg',
-            'images/galeria/2024/Imagem3.jpg',
-            'images/galeria/2024/Imagem4.jpg',
-            'images/galeria/2024/Imagem5.jpg'
-        ]).indexOf(this.src));
+        ];
+        const srcAtual = this.src.split('/').slice(-2).join('/');
+        const idx = imagens.findIndex(img => img.endsWith(srcAtual));
+        abrirModal(imagens, idx === -1 ? 0 : idx);
     };
 });
 </script>
