@@ -935,7 +935,7 @@
             text-decoration: none;
         }
         .atencao-titulo {
-            font-size: 1.65rem;
+            font-size: 3.3rem; /* 200% maior que 1.65rem */
             font-weight: bold;
             padding: 14px 24px;
             border-radius: 10px;
@@ -950,7 +950,7 @@
             transform: scale(1.1);
         }
         .atencao-mudanca {
-            font-size: 1.15rem;
+            font-size: 1.5rem;
             margin-top: 8px;
             font-weight: bold;
             display: block;
@@ -962,6 +962,10 @@
             box-shadow: 0 2px 10px rgba(0,0,0,0.10);
             text-align: center;
             padding: 8px 18px;
+        }
+        @keyframes piscar {
+            0%, 100% { color: #d80000; background: rgba(255,255,255,0.85);}
+            50% { color: #fff; background: #d80000;}
         }
     </style>
 </head>
