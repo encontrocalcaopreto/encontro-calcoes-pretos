@@ -996,9 +996,8 @@
 
     <section class="hero">
         <div class="atencao-banner">
-            <a href="#program" class="atencao-link">
-                <div class="atencao-titulo">ATENÇÃO</div>
-                <div class="atencao-mudanca">Mudança na programação do evento</div>
+            <a href="https://drive.google.com/drive/folders/1C2ocJ4gwh-vjdkhiGoL0hWVPcgZK06Rv" class="atencao-link" target="_blank" rel="noopener noreferrer">
+                <div class="atencao-titulo">FOTOS 2025</div>
             </a>
         </div>
         <div class="hero-content" style="position:relative; display:flex; align-items:center; justify-content:center;">
@@ -1189,6 +1188,15 @@
                         <button class="carousel-btn next" onclick="mudarGaleria('2024', 1)">&#10095;</button>
                     </div>
                 </div>
+                <!-- Carrossel 2025 -->
+                <div class="galeria-carrossel-box">
+                    <h3>Encontro 2025</h3>
+                    <div class="carousel" id="carousel-2025">
+                        <button class="carousel-btn prev" onclick="mudarGaleria('2025', -1)">&#10094;</button>
+                        <img src="images/galeria/2025/Imagem1.JPG" alt="2025 Imagem 1" class="carousel-img" id="img-galeria-2025">
+                        <button class="carousel-btn next" onclick="mudarGaleria('2025', 1)">&#10095;</button>
+                    </div>
+                </div>
             </div>
             <div class="galeria-grid">
                 <!-- Outras imagens em grid, se desejar -->
@@ -1361,7 +1369,13 @@
             'images/galeria/2024/Imagem2.jpg',
             'images/galeria/2024/Imagem3.jpg',
             'images/galeria/2024/Imagem4.jpg',
-            'images/galeria/2024/Imagem5.jpg'
+            'images/galeria/2024/Imagem5.jpg',
+            'images/galeria/2025/Imagem1.JPG',
+            'images/galeria/2025/Imagem2.JPG',
+            'images/galeria/2025/Imagem3.JPG',
+            'images/galeria/2025/Imagem4.JPG',
+            'images/galeria/2025/Imagem5.JPG',
+            'images/galeria/2025/Imagem6.JPG'
         ];
         let idxGaleria = 0;
         function mudarGaleria(ano, direcao) {
@@ -1445,6 +1459,21 @@
             let idx = galeria2024.indexOf(this.src.replace(window.location.origin + '/', ''));
             if(idx === -1) idx = 0;
             abrirModalImg(this.src, galeria2024, idx, '2024');
+        };
+
+        // Galeria 2025
+        const galeria2025 = [
+            'images/galeria/2025/Imagem1.JPG',
+            'images/galeria/2025/Imagem2.JPG',
+            'images/galeria/2025/Imagem3.JPG',
+            'images/galeria/2025/Imagem4.JPG',
+            'images/galeria/2025/Imagem5.JPG',
+            'images/galeria/2025/Imagem6.JPG'
+        ];
+        document.getElementById('img-galeria-2025').onclick = function() {
+            let idx = galeria2025.indexOf(this.src.replace(window.location.origin + '/', ''));
+            if(idx === -1) idx = 0;
+            abrirModalImg(this.src, galeria2025, idx, '2025');
         };
 
         document.getElementById('close-modal').onclick = function(e) {
